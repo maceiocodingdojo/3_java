@@ -17,7 +17,14 @@ public class AtmTest {
 	}
 	
 	@Test(expected = InvalidAmountException.class)
-	public void errorWhenWithdrawByInvalidCell() throws InvalidAmountException{
+	public void errorWhenWithdrawByInvalidCell() throws InvalidAmountException{  
 		atm.withdraw(123.0);
+	}
+	
+	@Test
+	public void withdraw10bucks() throws InvalidAmountException {
+		Withdraw result = atm.withdraw(10.0);
+		
+		assertEquals(1, result.ballots().size());
 	}
 }
