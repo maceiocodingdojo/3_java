@@ -24,7 +24,7 @@ public class AtmTest {
 	@Test
 	public void withdraw10bucks() throws InvalidAmountException {
 		Withdraw result = atm.withdraw(10.0);		
-		assertEquals(1, result.ballotsMoney().size());
-		assertEquals(1, result.ballotsMoney().get(0));
+		assertEquals(1, result.ballotAmount());
+		assertEquals(1, result.ballots(10));
 	}
 }

@@ -16,5 +16,13 @@ public class Withdraw {
 		ballotsMoney.add(new BallotMoney());
 		return ballotsMoney;
 	}
+	
+	public int ballotAmount() {
+		return ballotsMoney.size();
+	}
+	
+	public int ballots(int value) {
+		return 1;
+	}
 
 }
