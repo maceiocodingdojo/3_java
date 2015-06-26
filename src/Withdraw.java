@@ -19,9 +19,10 @@ public class Withdraw {
 		List<Integer> ballots = Arrays.asList(20, 10);
 		for (Integer ballot : ballots) {
 			while (amount > 0) {
-				if (this.amount > ballot) {
-					ballotsMoney.add(new BallotMoney());
-					amount -= ballot.doubleValue();
+				Double q = Math.floor(this.amount / ballot);
+				amount = amount % ballot;
+				if (q > 0) {
+					ballotsMoney.add(new BallotMoney(q));
 				} else {
 					break;
 				}
