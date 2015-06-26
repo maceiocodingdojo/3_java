@@ -9,6 +9,7 @@ public class Withdraw {
 	
 	public Withdraw(Double amount) {
 		this.ballotsMoney = new ArrayList<BallotMoney>();
+		this.ballotsMoney.add(new BallotMoney());
 		this.amount = amount;
 	}
 	
@@ -17,7 +18,7 @@ public class Withdraw {
 		return ballotsMoney;
 	}
 	
-	public int ballotAmount() {
+	public int ballotsTypeCount() {
 		return ballotsMoney.size();
 	}
 	
