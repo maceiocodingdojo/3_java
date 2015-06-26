@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -9,13 +10,17 @@ public class Withdraw {
 	
 	public Withdraw(Double amount) {
 		this.ballotsMoney = new ArrayList<BallotMoney>();
-		this.ballotsMoney.add(new BallotMoney());
 		this.amount = amount;
+		
+		buildBallots();
 	}
 	
-	public List<BallotMoney> ballotsMoney() {
-		ballotsMoney.add(new BallotMoney());
-		return ballotsMoney;
+	public void buildBallots() {
+		List<Integer> ballots = Arrays.asList(20);
+		while (amount > 0) {
+			ballotsMoney.add(new BallotMoney());
+			amount -= 10;
+		}
 	}
 	
 	public int ballotsTypeCount() {
