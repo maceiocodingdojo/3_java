@@ -18,17 +18,14 @@ public class Withdraw {
 	public void buildBallots() {
 		List<Integer> ballots = Arrays.asList(20, 10);
 		for (Integer ballot : ballots) {
-			while (amount > 0) {
-				Double q = Math.floor(this.amount / ballot);
+				Double q = Math.floor
+						(amount / ballot);
 				amount = amount % ballot;
-				if (q > 0) {
-					ballotsMoney.add(new BallotMoney(q));
-				} else {
-					break;
-				}
-			}	
+				if (q > 0) 
+					ballotsMoney.add(new BallotMoney());
 		}
-		
+		if (amount > 0)
+			throw new InvalidAmountException();
 	}
 	
 	public int ballotsTypeCount() {
