@@ -35,4 +35,27 @@ public class AtmTest {
 		assertEquals(1, result.ballots(10));
 		assertEquals(1, result.ballots(20));
 	}
+	
+	@Test
+	public void shouldWithdraw70bucks() throws InvalidAmountException {
+		Withdraw result = atm.withdraw(70d);
+		assertEquals(1,result.ballots(50));
+		assertEquals(1,result.ballots(20));
+	}
+	
+	@Test
+	public void shouldWithdraw90bucks()throws InvalidAmountException {
+		Withdraw result = atm.withdraw(90d);
+		assertEquals(1,result.ballots(50));
+		assertEquals(2,result.ballots(20));	
+	}
+	
+	/**
+	 */
+	@Test
+	public void shouldWithdraw650bucks()throws InvalidAmountException {
+		Withdraw result = atm.withdraw(650d);
+		assertEquals(6,result.ballots(100));
+		assertEquals(1,result.ballots(50));	
+	}
 }
