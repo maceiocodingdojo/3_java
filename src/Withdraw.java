@@ -11,20 +11,27 @@ public class Withdraw {
 	public Withdraw(Double amount) {
 		this.ballotsMoney = new ArrayList<BallotMoney>();
 		this.amount = amount;
-		
+
 		buildBallots();
 	}
 	
 	public void buildBallots() {
-		List<Integer> ballots = Arrays.asList(20, 10);
-		for (Integer ballot : ballots) {
-				Double q = Math.floor
-						(amount / ballot);
-				amount = amount % ballot;
-				if (q > 0) 
-					ballotsMoney.add(new BallotMoney());
+		List<Integer> availableBallotTypes = Arrays.asList(100, 50, 20, 10);
+		Double tempAmount = amount;
+		for (Integer ballotType : availableBallotTypes) {
+			if (tempAmount > 0 && tempAmount >= ballotType) {
+				//get how many ballots of that type can be given
+				Double q = Math.floor(tempAmount/ballotType);
+				//get how much that ballot type can't cover
+				tempAmount = tempAmount % ballotType;
+				if (q > 0) {
+					for (int i=1; i<=q; i++) {
+						ballotsMoney.add(new BallotMoney(ballotType));
+					}
+				}
+			}
 		}
-		if (amount > 0)
+		if (tempAmount > 0)
 			throw new InvalidAmountException();
 	}
 	
@@ -32,8 +39,18 @@ public class Withdraw {
 		return ballotsMoney.size();
 	}
 	
-	public int ballots(int value) {
-		return 1;
+	/**
+	 * Returns the quantity of ballots with parameter value
+	 * @param value
+	 * @return count
+	 */
+	public int ballots(Integer value) {
+		int count = 0;
+		for (BallotMoney ballot : this.ballotsMoney) {
+			if (ballot.ballot.equals(value.toString())) {
+				count++;
+			}
+		}	
+		return count;	
 	}
-
 }

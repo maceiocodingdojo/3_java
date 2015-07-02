@@ -1,6 +1,8 @@
 
 public class BallotMoney {
-	private String ballot;
+	public String ballot;
 	
-	
+	public BallotMoney(Integer ballotValue) {
+		this.ballot = ballotValue.toString();
+	}
 }
